@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'H2'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'H2'}"}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    %link{:href => "http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", :rel => "stylesheet"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Josefin+Slab:700", :rel => "stylesheet", :type => "text/css"}          %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet", :type => "text/css"}
+
+
+    = csrf_meta_tags
+  %body
+    -# application layout styled for Bootstrap 2.3
+    %header
+      = render 'layouts/navigation'
+    %main{:role => "main"}
+      .container
+        .content
+          .row
+            .span12
+              = render 'layouts/messages'
+              = yield
+          %footer

@@ -1,0 +1,26 @@
+%h1 Listing events
+
+%table
+  %tr
+    %th Name --
+    %th Location --
+    %th Date and time of event --
+    %th Description event --
+    %th Show event --
+    %th Edit event --
+    %th Destroy event --
+    %th Participer
+
+  - @events.each do |event|
+    %tr
+      %td= event.name
+      %td= event.location
+      %td= event.date_and_time_of_event
+      %td= event.description_event
+      %td= link_to 'Show', event
+      %td= link_to 'Edit', edit_event_path(event)
+      %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'participer', event_participate_path, :method => :get, :data => { :confirm => 'Souhaitez vous participer ?'}
+%br
+
+= link_to 'New Event', new_event_path
